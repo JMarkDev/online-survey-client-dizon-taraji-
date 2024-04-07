@@ -2,134 +2,112 @@
   "questions": [
     {
       "id": "question1",
-      "question_text": "1. What is your primary career goal upon completing your education?",
-      "choices": [
-        "Pursue further education (e.g., graduate school)",
-        "Secure a full-time job in my field of study",
-        "Start my own business or freelance",
-        "Undecided / Unsure",
-        "Explore different career paths"
-      ]
+      "question_text": "1. What time of day were you most productive for studying?",
+      "choices": ["Morning", "Afternoon", "Evening", "Night"]
     },
     {
       "id": "question2",
-      "question_text": "2. Which industry or field are you most interested in pursuing a career in?",
+      "question_text": "2. On average, how many hours per week do you dedicate to studying outside of class?",
       "choices": [
-        "Technology",
-        "Healthcare",
-        "Finance",
-        "Education",
-        "Arts and Entertainment",
-        "Environmental Science",
-        "Marketing and Advertising",
-        "Law and Legal Services",
-        "Hospitality and Tourism",
-        "Manufacturing and Engineering"
+        "Less than 5 hours",
+        "5-10 hours",
+        "10-15 hours",
+        "More than 15 hours"
       ]
     },
     {
       "id": "question3",
-      "question_text": "3. What factors are most important to you when considering a career?",
+      "question_text": "3. How do you typically approach preparing for exams or assessments?",
       "choices": [
-        "Salary and benefits",
-        "Opportunities for advancement",
-        "Work-life balance",
-        "Job security",
-        "Impact and purpose",
-        "Flexibility and autonomy",
-        "Company culture",
-        "Location",
-        "Learning and growth opportunities",
-        "Job satisfaction",
-        "Social responsibility of the organization"
+        "Create study guides or flashcards to break down the material into smaller, manageable sections",
+        "Review materials regularly over time",
+        "Take practice tests or quizzes",
+        "Seek help from classmates or teachers",
+        "Participate in study groups or review sessions",
+        "Incorporate active learning techniques, such as summarizing or questioning"
       ]
     },
     {
       "id": "question4",
-      "question_text": "4. How do you plan to gain relevant experience for your desired career?",
+      "question_text": "4. How do you manage your study materials and resources?",
       "choices": [
-        "Internships or co-op programs",
-        "Part-time jobs or volunteering",
-        "Research opportunities",
-        "Networking events and professional associations",
-        "Academic projects or coursework",
-        "Freelance work or side projects",
-        "Mentorship programs",
-        "Online courses or certifications"
+        "Keep everything organized in folders or binders",
+        "Use digital tools such as apps or online platforms",
+        "Take handwritten notes",
+        "Utilize highlighters or color-coding",
+        "Create mind maps or concept diagrams",
+        "Establish a schedule or planner for study sessions"
       ]
     },
     {
       "id": "question5",
-      "question_text": "5. What specific career goals or milestones do you aim to achieve within the next 5 years?",
+      "question_text": "5. How do you handle distractions while studying?",
       "choices": [
-        "Advance to a higher position in my current field",
-        "Transition to a new career path",
-        "Start my own business or entrepreneurial venture",
-        "Acquire additional certifications or qualifications",
-        "Undecided / Unsure",
-        "Lead a team or project"
+        "Turn off electronic devices",
+        "Find a quiet study space",
+        "Use noise-canceling headphones",
+        "Implement the Pomodoro technique (study for a set amount of time, then take a short break)",
+        "Create a to-do list to prioritize tasks and minimize distractions",
+        "Break down study sessions into smaller, manageable chunks"
       ]
     },
-
     {
       "id": "question6",
-      "question_text": "6. How important is ongoing professional development and learning for your career aspirations?",
+      "question_text": "6. Do you have a preferred study environment? If yes, choose the best place for you.",
       "choices": [
-        "Very important",
-        "Somewhat important",
-        "Neutral",
-        "Not important at all",
-        "Essential for staying competitive"
+        "Quiet library or study room",
+        "Café or coffee shop",
+        "Home environment",
+        "Outdoors (park, garden, etc.)",
+        "Classroom or school/university campus",
+        "Anywhere with natural light and comfortable seating"
       ]
     },
     {
       "id": "question7",
-      "question_text": "7. What challenges do you anticipate encountering in achieving your career goals?",
+      "question_text": "7. How do you prioritize your tasks and assignments when managing your time?",
       "choices": [
-        "Limited job opportunities in my desired field",
-        "Lack of relevant experience",
-        "Financial constraints",
-        "Balancing work and personal commitments",
-        "Discrimination or bias in the workplace",
-        "Technological advancements impacting job prospects"
+        "By deadline",
+        "By importance or difficulty",
+        "By subject or class",
+        "By personal preference",
+        "By estimated time required",
+        "By potential impact on overall goals"
       ]
     },
     {
       "id": "question8",
-      "question_text": "8. How do you envision your career contributing to your overall life satisfaction and fulfillment?",
+      "question_text": "8. How do you balance your academic workload with other commitments, such as extracurricular activities, work, or social life?",
       "choices": [
-        "It is my primary source of fulfillment",
-        "It is one aspect contributing to my overall satisfaction",
-        "Neutral / Unsure",
-        "It is not a significant factor in my overall satisfaction",
-        "My career aligns with my personal values and passions"
+        "Prioritize tasks and allocate time accordingly",
+        "Communicate with teachers or supervisors about workload",
+        "Learn to say no to additional commitments when necessary",
+        "Delegate tasks or seek support from others",
+        "Utilize time-blocking techniques",
+        "Regularly assess and adjust priorities based on changing circumstances"
       ]
     },
     {
       "id": "question9",
-      "question_text": "9. What support or resources do you feel would be most beneficial in helping you achieve your career goals?",
+      "question_text": "9. What resources or support do you currently utilize for improving your study skills and time management?",
       "choices": [
-        "Career counseling or mentorship programs",
-        "Networking opportunities with professionals in my desired field",
-        "Access to job/internship postings and recruitment events",
-        "Financial assistance or scholarships",
-        "Workshops or seminars on career development skills",
-        "Industry-specific training programs",
-        "Support for entrepreneurship and startups",
-        "Peer support groups or communities"
+        "Online tutorials or videos",
+        "Study groups or peer support",
+        "Academic workshops or seminars",
+        "Academic advisors or counselors",
+        "Time management apps or tools",
+        "Seeking feedback from professors or mentors"
       ]
     },
     {
       "id": "question10",
-      "question_text": "10. How do you plan to balance your career aspirations with other aspects of your life, such as family, hobbies, and personal interests?",
+      "question_text": "10. What improvements or changes would you like to make to your study habits and time management skills in the future?",
       "choices": [
-        "Prioritize my career above other aspects of life",
-        "Strive for a balance between career and personal life",
-        "Not sure / Haven't thought about it yet",
-        "Focus equally on career and personal growth",
-        "Incorporate leisure and hobbies into my career plan",
-        "Seek flexible work arrangements for better balance",
-        "Ensure family and relationships are a priority"
+        "Better organization and planning",
+        "Reducing procrastination habits",
+        "Improving focus and concentration",
+        "Balancing academic and personal life more effectively",
+        "Establishing a consistent study routine"
       ]
     }
   ]

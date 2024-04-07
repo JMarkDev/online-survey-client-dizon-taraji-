@@ -6,7 +6,7 @@ const NotFound = () => {
     window.history.back();
   };
   return (
-    <main className="grid min-h-full place-items-center px-6 ">
+    <main className="grid min-h-full place-items-center px-6 bg-gradient-to-r from-violet-200 to-pink-200 h-screen">
       <div className="text-center">
         <img src={Img404} alt="not found" className="h-[50vh]" />
         {/* <p className="text-base font-semibold text-indigo-600">404</p> */}

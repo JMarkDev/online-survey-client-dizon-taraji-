@@ -8,9 +8,9 @@ const BarChart = ({ calculateTotalOccurrences, surveyData }) => {
   useEffect(() => {
     // Calculate series only when surveyData changes
     const calculateSeries = () => {
-      const question = questions.questions[1];
-      const questionId = question.id;
-      const answerTexts = question.choices;
+      const question1 = questions.questions[0];
+      const questionId = question1.id;
+      const answerTexts = question1.choices;
 
       const newSeries = answerTexts.map((answerText) =>
         calculateTotalOccurrences(questionId, answerText)
@@ -56,7 +56,7 @@ const BarChart = ({ calculateTotalOccurrences, surveyData }) => {
         show: false,
       },
       xaxis: {
-        categories: questions.questions[1].choices,
+        categories: questions.questions[0].choices,
         labels: {
           style: {
             colors: colorList,

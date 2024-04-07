@@ -3,10 +3,12 @@ import { Link } from "react-router-dom";
 import Doughnut from "../components/DoughnutQ1";
 import LineChart from "../components/LineChart";
 import api from "../api/api";
-import ApexChart from "../components/BarChartQ2";
+import BarChartQ1 from "../components/BarChartQ1";
+import BarChartQ2 from "../components/BarChartQ2";
 import DoughnutQuestion3 from "../components/DoughnutQuestion3";
 import BarChartQ4 from "../components/BarchartQ4";
 import DoughtnutQ6 from "../components/DoughnutQ6";
+import BarChartQ7 from "../components/BarChartQ7";
 import questions from "../questions/question.json";
 
 const Dashboard = () => {
@@ -15,7 +17,6 @@ const Dashboard = () => {
   const cardsData = [
     { title: "Total Responses", count: responseCount },
     { title: "Total Course", count: 8 },
-    { title: "Total Questions", count: 10 },
   ];
 
   useEffect(() => {
@@ -151,8 +152,8 @@ const Dashboard = () => {
   }
 
   return (
-    <>
-      <div className="bg-gray-200 shadow-lg p-4 flex justify-between">
+    <div className="bg-gradient-to-r from-violet-200 to-pink-200 ">
+      <div className=" shadow-lg p-4 flex justify-between">
         <h1 className="text-2xl font-bold ml-10">Survey Dashboard</h1>
         <Link
           className="bg-blue-500 hover:bg-blue-700 text-white px-5 py-2 flex items-center rounded-lg"
@@ -162,7 +163,7 @@ const Dashboard = () => {
         </Link>
       </div>
       <div className="max-w-5xl m-auto ">
-        <div className="grid md:grid-cols-3 gap-10 mt-5 px-20">
+        <div className="grid md:grid-cols-2 gap-10 mt-5 px-20  m-auto text-center">
           {cardsData.map((card, index) => (
             <div key={index} className="bg-white rounded-lg p-6 shadow-md">
               <h1 className="text-lg font-semibold text-gray-800 mb-2">
@@ -182,22 +183,12 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="max-w-5xl mt-10 m-auto">
-        <div className="bg-white rounded-lg shadow-md">
-          <div className="flex justify-between items-center">
-            <h1 className="text-lg p-6 font-semibold text-gray-800 mb-2">
-              Primary career goal upon completing education
-            </h1>
-            <button
-              onClick={downloadCSV}
-              className="mr-4 text-sm bg-blue-600 hover:bg-blue-800 text-white h-10 rounded-lg px-4"
-            >
-              Download CSV
-            </button>
-          </div>
-
-          <Doughnut
+        <div className="bg-white rounded-lg p-6 shadow-md">
+          <h1 className="text-lg font-semibold text-gray-800 mb-2">
+            Most productive time for studying
+          </h1>
+          <BarChartQ1
             surveyData={surveyData}
-            data={surveyData}
             calculateTotalOccurrences={calculateTotalOccurrences}
           />
         </div>
@@ -205,9 +196,9 @@ const Dashboard = () => {
       <div className="max-w-5xl mt-10 m-auto">
         <div className="bg-white rounded-lg p-6 shadow-md">
           <h1 className="text-lg font-semibold text-gray-800 mb-2">
-            Industry or field are most interested in pursuing a career
+            Hours per week dedicate to studying outside of class
           </h1>
-          <ApexChart
+          <BarChartQ2
             surveyData={surveyData}
             calculateTotalOccurrences={calculateTotalOccurrences}
           />
@@ -217,7 +208,7 @@ const Dashboard = () => {
         <div className="bg-white rounded-lg p-6 shadow-md ">
           <div className="flex justify-between">
             <h1 className="text-lg font-semibold text-gray-800 mb-2">
-              Most important factors when considering a career
+              Typically approach preparing for exams or assessments
             </h1>
             <button
               onClick={downloadCSVDoughnut2}
@@ -236,36 +227,15 @@ const Dashboard = () => {
       <div className="max-w-5xl mt-10 m-auto">
         <div className="bg-white rounded-lg p-6 shadow-md">
           <h1 className="text-lg font-semibold text-gray-800 mb-2">
-            Methods for Gaining Relevant Career Experience
+            Time Management
           </h1>
-          <BarChartQ4
+          <BarChartQ7
             surveyData={surveyData}
             calculateTotalOccurrences={calculateTotalOccurrences}
           />
         </div>
       </div>
-      <div className="max-w-5xl mt-10 m-auto">
-        <div className="bg-white rounded-lg p-6 shadow-md">
-          <div className="flex justify-between items-center">
-            <h1 className="text-lg font-semibold text-gray-800 mb-2">
-              Importance Professional Development and Learning for Career
-              Aspirations
-            </h1>
-            <button
-              onClick={downloadCSVQ6}
-              className="mr-4 text-sm bg-blue-600 hover:bg-blue-800 text-white h-10 rounded-lg px-4"
-            >
-              Download CSV
-            </button>
-          </div>
-
-          <DoughtnutQ6
-            surveyData={surveyData}
-            calculateTotalOccurrences={calculateTotalOccurrences}
-          />
-        </div>
-      </div>
-    </>
+    </div>
   );
 };
 

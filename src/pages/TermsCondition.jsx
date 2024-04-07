@@ -1,64 +1,76 @@
-import React from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
+import noticeImg from "../assets/exclamation-mark.png";
 
-const TermsCondition = () => {
-  const handleAcknowledge = () => {
-    // Implement acknowledgment logic here (e.g., mark terms as acknowledged)
-    console.log("Terms acknowledged!");
+const TermsCondition = ({ openModal }) => {
+  const [agree, setAgree] = useState(false);
+
+  const handleAgree = () => {
+    if (agree) {
+      // Execute the action (e.g., navigate to survey)
+      openModal();
+    } else {
+      // Show error message or perform other actions when not agreed
+      alert("Please agree to the terms and conditions");
+    }
   };
 
   return (
-    <div className="max-w-xl bg-gray-200 m-auto mt-8 rounded-lg p-6 shadow-lg">
-      <h1 className="text-2xl font-bold text-gray-800 mb-4">
-        Terms & Conditions
-      </h1>
-      <div className="text-gray-700 mb-4">
-        <p>
-          Thank you for participating in this career survey! This survey is
-          designed to gather information about your career goals, interests, and
-          aspirations. By participating, you agree to the following terms and
-          conditions.
-        </p>
-        <p className="mt-4">
-          Participation in this survey is voluntary. You have the right to skip
-          any question you do not feel comfortable answering or withdraw from
-          the survey at any time.
-        </p>
-      </div>
-
-      <div className="border-t border-gray-400 pt-6">
-        <h2 className="text-xl font-bold text-gray-800 mb-4">
-          Privacy and Confidentiality
-        </h2>
-        <p className="text-gray-700">
-          We respect your privacy. All responses to this survey will be kept
-          confidential. Your individual answers will not be shared with any
-          third party and will only be used for statistical analysis of the
-          overall data.
-        </p>
-      </div>
-
-      <div className="border-t border-gray-400 pt-6">
-        <h2 className="text-xl font-bold text-gray-800 mb-4">Data Usage</h2>
-        <p className="text-gray-700">
-          The anonymized data collected from this survey may be used for
-          research purposes or to improve career resources.
-        </p>
-      </div>
-
-      <div className="mt-4 text-gray-700">
-        <p>
-          By clicking "Acknowledge," you acknowledge that you have read and
-          understood these terms and conditions.
-        </p>
-      </div>
-      <div className="mt-8 flex justify-end">
-        <Link
-          to={"/survey"}
-          className="bg-blue-500 hover:bg-blue-600 text-white font-semibold px-6 py-2 rounded-md shadow-md transition duration-300 ease-in-out"
-        >
-          Acknowledge
-        </Link>
+    <div className="fixed inset-0 z-50 flex justify-center items-center overflow-y-auto bg-black bg-opacity-50">
+      <div className="relative p-4 w-full max-w-xl">
+        <div className="relative bg-white rounded-lg shadow p-6">
+          <img src={noticeImg} alt="" className="h-20 mb-10 m-auto" />
+          <h1 className="text-2xl font-bold text-gray-800 mb-4">
+            Terms & Conditions
+          </h1>
+          <div className="border-t border-gray-400 pt-6">
+            <p className="text-gray-700 leading-relaxed">
+              Hello Crimson! Welcome to our survey on{" "}
+              <strong className="font-semibold">
+                "Optimizing Study Skills and Time Management of the Students at
+                Western Mindanao State University."
+              </strong>{" "}
+              This survey aims to gather insights into study habits and time
+              management techniques among students. Your participation is
+              voluntary, and you agree to provide accurate and truthful
+              responses. You may withdraw at any time.
+            </p>
+            <p className="mt-4 text-gray-700 leading-relaxed">
+              <strong className="font-semibold">
+                Privacy and Confidentiality:
+              </strong>{" "}
+              Information collected will be used for research purposes only and
+              treated confidentially. Thank you for sharing your experiences.
+            </p>
+          </div>
+          <div className="flex items-center justify-center mt-4">
+            <input
+              onChange={(e) => setAgree(e.target.checked)}
+              type="checkbox"
+              className="cursor-pointer h-4 w-4 accent-blue-600 form-checkbox"
+            />
+            <label className="text-gray-700 ml-2">
+              I agree to the terms and conditions
+            </label>
+          </div>
+          <div className="flex justify-center items-center gap-5">
+            <button
+              onClick={handleAgree}
+              className={`${
+                !agree ? "cursor-not-allowed opacity-50" : ""
+              } bg-blue-500 rounded-lg text-white px-4 py-2 font-bold mt-4 block text-center`}
+              disabled={!agree}
+            >
+              Agree
+            </button>
+            <Link
+              to={"/dashboard"}
+              className="bg-gray-300 p-2 rounded-lg text-black font-bold mt-4 block text-center"
+            >
+              Disagree
+            </Link>
+          </div>
+        </div>
       </div>
     </div>
   );
