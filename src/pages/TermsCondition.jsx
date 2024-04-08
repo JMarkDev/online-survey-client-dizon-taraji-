@@ -20,7 +20,7 @@ const TermsCondition = ({ openModal }) => {
       <div className="relative p-4 w-full max-w-xl">
         <div className="relative bg-white rounded-lg shadow p-6">
           <img src={noticeImg} alt="" className="h-20 mb-10 m-auto" />
-          <h1 className="text-2xl font-bold text-gray-800 mb-4">
+          <h1 className="text-2xl font-bold text-gray-800 ">
             Terms & Conditions
           </h1>
           <div className="border-t border-gray-400 pt-6">

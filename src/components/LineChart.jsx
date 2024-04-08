@@ -63,13 +63,61 @@ const Analytics = ({ surveyData }) => {
   };
 
   function downloadCSV() {
-    const headers = ["Full Name", "Email", "Course", "Gender"];
+    const headers = [
+      "Full Name",
+      "Email",
+      "Course",
+      "Gender",
+      "Most productive time for studying",
+      "Hours per week for studying",
+      "Best Approach for Preparing for exam/quiz",
+      "Techniques to Handle Distractions",
+      "Time Management",
+    ];
     const dataRows = surveyData.map((response) => {
       return [
         response.fullname,
         response.email,
         response.course,
         response.gender,
+        response.answers.question1[0],
+        response.answers.question2[0],
+        response.answers.question3[0],
+        response.answers.question5[0],
+        response.answers.question10[0],
+      ];
+    });
+
+    const csvContent = [headers, ...dataRows]
+      .map((row) => row.join(","))
+      .join("\n");
+
+    const blob = new Blob([csvContent], { type: "text/csv" });
+    const link = document.createElement("a");
+    link.href = window.URL.createObjectURL(blob);
+    link.download = "response.csv";
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+  }
+
+  function downloadCSVDonut() {
+    const headers = [
+      "Full Name",
+      "Email",
+      "Course",
+      "Gender",
+      "Study Techniques",
+      "Study Skills",
+    ];
+    const dataRows = surveyData.map((response) => {
+      return [
+        response.fullname,
+        response.email,
+        response.course,
+        response.gender,
+        response.answers.question3[0],
+        response.answers.question5[0],
       ];
     });
 

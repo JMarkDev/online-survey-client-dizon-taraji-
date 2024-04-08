@@ -1,16 +1,14 @@
 import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import Doughnut from "../components/DoughnutQ1";
+
 import LineChart from "../components/LineChart";
 import api from "../api/api";
 import BarChartQ1 from "../components/BarChartQ1";
 import BarChartQ2 from "../components/BarChartQ2";
 import DoughnutQuestion3 from "../components/DoughnutQuestion3";
 import DoughnutQ5 from "../components/DoughnutQ5";
-import BarChartQ4 from "../components/BarchartQ4";
-import DoughtnutQ6 from "../components/DoughnutQ6";
+import BarChartQ6 from "../components/BarChartQ6";
 import BarChartQ7 from "../components/BarChartQ7";
-import questions from "../questions/question.json";
 
 const Dashboard = () => {
   const [option, setOption] = useState("default");
@@ -21,7 +19,6 @@ const Dashboard = () => {
     { title: "Total Course", count: 8 },
   ];
 
-  console.log(option);
   useEffect(() => {
     const fetchResponse = async () => {
       try {
@@ -55,100 +52,34 @@ const Dashboard = () => {
     return totalOccurrences;
   };
 
-  function downloadCSV() {
-    const headers = ["Category", "Total"];
+  function downloadCSVDonut() {
+    const headers = [
+      "Full Name",
+      "Email",
+      "Course",
+      "Gender",
+      "Study Techniques",
+      "Study Skills",
+    ];
+    const dataRows = surveyData.map((response) => {
+      return [
+        response.fullname,
+        response.email,
+        response.course,
+        response.gender,
+        response.answers.question3[0],
+        response.answers.question5[0],
+      ];
+    });
 
-    const question1 = questions.questions[0];
-    const questionId = question1.id;
-    const answerTexts = question1.choices;
+    const csvContent = [headers, ...dataRows]
+      .map((row) => row.join(","))
+      .join("\n");
 
-    // Calculate total occurrences for each answer text in the question
-    const series = answerTexts.map((answerText) =>
-      calculateTotalOccurrences(questionId, answerText)
-    );
-
-    // Combine categories and totals into an array of arrays (rows)
-    const dataRows = answerTexts.map((answerText, index) => [
-      answerText,
-      series[index],
-    ]);
-
-    // Prepare CSV content
-    const csvContent = [headers, ...dataRows.map((row) => row.join(","))].join(
-      "\n"
-    );
-
-    // Create and download CSV file
     const blob = new Blob([csvContent], { type: "text/csv" });
     const link = document.createElement("a");
     link.href = window.URL.createObjectURL(blob);
-    link.download = "data.csv";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  }
-
-  function downloadCSVDoughnut2() {
-    const headers = ["Category", "Total"];
-
-    const question3 = questions.questions[2];
-    const questionId = question3.id;
-    const answerTexts = question3.choices;
-
-    // Calculate total occurrences for each answer text in the question
-    const series = answerTexts.map((answerText) =>
-      calculateTotalOccurrences(questionId, answerText)
-    );
-
-    // Combine categories and totals into an array of arrays (rows)
-    const dataRows = answerTexts.map((answerText, index) => [
-      answerText,
-      series[index],
-    ]);
-
-    // Prepare CSV content
-    const csvContent = [headers, ...dataRows.map((row) => row.join(","))].join(
-      "\n"
-    );
-
-    // Create and download CSV file
-    const blob = new Blob([csvContent], { type: "text/csv" });
-    const link = document.createElement("a");
-    link.href = window.URL.createObjectURL(blob);
-    link.download = "data.csv";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  }
-
-  function downloadCSVQ6() {
-    const headers = ["Category", "Total"];
-
-    const question6 = questions.questions[5];
-    const questionId = question6.id;
-    const answerTexts = question6.choices;
-
-    // Calculate total occurrences for each answer text in the question
-    const series = answerTexts.map((answerText) =>
-      calculateTotalOccurrences(questionId, answerText)
-    );
-
-    // Combine categories and totals into an array of arrays (rows)
-    const dataRows = answerTexts.map((answerText, index) => [
-      answerText,
-      series[index],
-    ]);
-
-    // Prepare CSV content
-    const csvContent = [headers, ...dataRows.map((row) => row.join(","))].join(
-      "\n"
-    );
-
-    // Create and download CSV file
-    const blob = new Blob([csvContent], { type: "text/csv" });
-    const link = document.createElement("a");
-    link.href = window.URL.createObjectURL(blob);
-    link.download = "data.csv";
+    link.download = "response.csv";
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -204,7 +135,7 @@ const Dashboard = () => {
               Typically approach preparing for exams or assessments
             </h1>
             <button
-              onClick={downloadCSVDoughnut2}
+              onClick={downloadCSVDonut}
               className="mr-4 text-sm bg-blue-600 hover:bg-blue-800 text-white h-10 rounded-lg px-4"
             >
               Download CSV
@@ -221,10 +152,6 @@ const Dashboard = () => {
               calculateTotalOccurrences={calculateTotalOccurrences}
             />
           )}
-          {/* <DoughnutQuestion3
-            surveyData={surveyData}
-            calculateTotalOccurrences={calculateTotalOccurrences}
-          /> */}
         </div>
       </div>
       <div className="max-w-5xl mt-10 m-auto">
@@ -244,6 +171,18 @@ const Dashboard = () => {
             Hours per week dedicate to studying outside of class
           </h1>
           <BarChartQ2
+            surveyData={surveyData}
+            calculateTotalOccurrences={calculateTotalOccurrences}
+          />
+        </div>
+      </div>
+
+      <div className="max-w-5xl mt-10 m-auto">
+        <div className="bg-white rounded-lg p-6 shadow-md">
+          <h1 className="text-lg font-semibold text-gray-800 mb-2">
+            Most preferred study environment
+          </h1>
+          <BarChartQ6
             surveyData={surveyData}
             calculateTotalOccurrences={calculateTotalOccurrences}
           />

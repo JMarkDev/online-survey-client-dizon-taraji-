@@ -4,6 +4,7 @@ import Dashboard from "./pages/Dashboard";
 import { HashRouter as Router, Routes, Route } from "react-router-dom";
 import NotFound from "./pages/NotFound";
 import TermsCondition from "./pages/TermsCondition";
+import Thankyou from "./pages/Thankyou";
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
           <Route path="/survey" element={<Survey />} />
           <Route path="/dashboard" element={<Dashboard />} />
           <Route path="/terms-condition" element={<TermsCondition />} />
+          <Route path="/thankyou" element={<Thankyou />} />
           <Route path="/*" element={<NotFound />} />
         </Routes>
       </Router>

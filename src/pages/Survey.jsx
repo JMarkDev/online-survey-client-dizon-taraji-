@@ -7,11 +7,12 @@ import "react-toastify/dist/ReactToastify.css";
 import api from "../api/api";
 import Loading from "../components/loading/Loading";
 import TermsCondition from "./TermsCondition";
+import Thankyou from "./Thankyou";
 
 const Survey = () => {
   const [modal, setModal] = useState(true);
+  const [thankyou, setThankyou] = useState(false);
   const [loading, setLoading] = useState(false);
-  const [termsAccepted, setTermsAccepted] = useState(false);
   const navigate = useNavigate();
   const [values, setValues] = useState({
     fullname: "",
@@ -27,13 +28,7 @@ const Survey = () => {
   const [genderError, setGenderError] = useState("");
   const [answerError, setAnswerError] = useState("");
 
-  // console.log(values.answers);
-  const handleTermsCheck = (event) => {
-    setTermsAccepted(event.target.checked);
-  };
-
   const handleSubmit = async (e) => {
-    console.log("click");
     e.preventDefault();
     setLoading(true);
 
@@ -63,10 +58,11 @@ const Survey = () => {
 
       if (response.data.status === "success") {
         toast.success("Survey submitted successfully");
+        setThankyou(true);
         setTimeout(() => {
           navigate("/Dashboard");
           setLoading(false);
-        }, 2000);
+        }, 3000);
         setFormSubmitted(true);
       }
     } catch (error) {
@@ -158,6 +154,7 @@ const Survey = () => {
           <Loading />
         </div>
       )}
+      {thankyou && <Thankyou />}
       {modal && <TermsCondition openModal={closeModal} />}
       <div className="p-4 bg-gradient-to-r from-violet-200 to-pink-200">
         <ToastContainer
