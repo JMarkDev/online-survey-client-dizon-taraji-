@@ -6,12 +6,14 @@ import api from "../api/api";
 import BarChartQ1 from "../components/BarChartQ1";
 import BarChartQ2 from "../components/BarChartQ2";
 import DoughnutQuestion3 from "../components/DoughnutQuestion3";
+import DoughnutQ5 from "../components/DoughnutQ5";
 import BarChartQ4 from "../components/BarchartQ4";
 import DoughtnutQ6 from "../components/DoughnutQ6";
 import BarChartQ7 from "../components/BarChartQ7";
 import questions from "../questions/question.json";
 
 const Dashboard = () => {
+  const [option, setOption] = useState("default");
   const [surveyData, setSurveyData] = useState([]);
   const [responseCount, setResponseCount] = useState(0);
   const cardsData = [
@@ -19,6 +21,7 @@ const Dashboard = () => {
     { title: "Total Course", count: 8 },
   ];
 
+  console.log(option);
   useEffect(() => {
     const fetchResponse = async () => {
       try {
@@ -183,6 +186,48 @@ const Dashboard = () => {
         </div>
       </div>
       <div className="max-w-5xl mt-10 m-auto">
+        <div className="bg-white rounded-lg p-6 shadow-md ">
+          <div className="w-full">
+            <select
+              name=""
+              id=""
+              onChange={(e) => setOption(e.target.value)}
+              className="w-full p-2 mb-4 border-gray-400 border focus:outline-none focus:ring-1 focus:ring-blue-600 rounded-lg"
+            >
+              <option value="default">Default</option>
+              <option value="study skills">Study Skills</option>
+              <option value="study techniques">Study Techniques</option>
+            </select>
+          </div>
+          <div className="flex justify-between">
+            <h1 className="text-lg font-semibold text-gray-800 mb-2">
+              Typically approach preparing for exams or assessments
+            </h1>
+            <button
+              onClick={downloadCSVDoughnut2}
+              className="mr-4 text-sm bg-blue-600 hover:bg-blue-800 text-white h-10 rounded-lg px-4"
+            >
+              Download CSV
+            </button>
+          </div>
+          {option === "study techniques" ? (
+            <DoughnutQ5
+              surveyData={surveyData}
+              calculateTotalOccurrences={calculateTotalOccurrences}
+            />
+          ) : (
+            <DoughnutQuestion3
+              surveyData={surveyData}
+              calculateTotalOccurrences={calculateTotalOccurrences}
+            />
+          )}
+          {/* <DoughnutQuestion3
+            surveyData={surveyData}
+            calculateTotalOccurrences={calculateTotalOccurrences}
+          /> */}
+        </div>
+      </div>
+      <div className="max-w-5xl mt-10 m-auto">
         <div className="bg-white rounded-lg p-6 shadow-md">
           <h1 className="text-lg font-semibold text-gray-800 mb-2">
             Most productive time for studying
@@ -204,26 +249,7 @@ const Dashboard = () => {
           />
         </div>
       </div>
-      <div className="max-w-5xl mt-10 m-auto">
-        <div className="bg-white rounded-lg p-6 shadow-md ">
-          <div className="flex justify-between">
-            <h1 className="text-lg font-semibold text-gray-800 mb-2">
-              Typically approach preparing for exams or assessments
-            </h1>
-            <button
-              onClick={downloadCSVDoughnut2}
-              className="mr-4 text-sm bg-blue-600 hover:bg-blue-800 text-white h-10 rounded-lg px-4"
-            >
-              Download CSV
-            </button>
-          </div>
 
-          <DoughnutQuestion3
-            surveyData={surveyData}
-            calculateTotalOccurrences={calculateTotalOccurrences}
-          />
-        </div>
-      </div>
       <div className="max-w-5xl mt-10 m-auto">
         <div className="bg-white rounded-lg p-6 shadow-md">
           <h1 className="text-lg font-semibold text-gray-800 mb-2">
