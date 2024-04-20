@@ -16,7 +16,7 @@ const TermsCondition = ({ openModal }) => {
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex justify-center items-center overflow-y-auto bg-black bg-opacity-50">
+    <div className="fixed  inset-0 z-50 flex justify-center items-center overflow-y-auto bg-black bg-opacity-50">
       <div className="relative p-4 w-full max-w-xl">
         <div className="relative bg-white rounded-lg shadow p-6">
           <img src={noticeImg} alt="" className="h-20 mb-10 m-auto" />

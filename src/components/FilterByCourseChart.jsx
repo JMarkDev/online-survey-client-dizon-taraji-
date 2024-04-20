@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import ReactApexChart from "react-apexcharts";
 import questions from "../questions/question.json";
 
-const BarChart = ({ surveyData }) => {
+const FilterByCourseChart = ({ surveyData }) => {
   const [series, setSeries] = useState([]);
   const [course, setCourse] = useState("");
   const [filteredSurveyData, setFilteredSurveyData] = useState([]);
@@ -49,7 +49,7 @@ const BarChart = ({ surveyData }) => {
   useEffect(() => {
     // Calculate series based on filteredSurveyData
     const calculateSeries = () => {
-      const question = questions.questions[6];
+      const question = questions.questions[2];
       const questionId = question.id;
       const answerTexts = question.choices;
 
@@ -97,7 +97,7 @@ const BarChart = ({ surveyData }) => {
         show: false,
       },
       xaxis: {
-        categories: questions.questions[6].choices,
+        categories: questions.questions[2].choices,
         labels: {
           style: {
             colors: colorList,
@@ -110,7 +110,7 @@ const BarChart = ({ surveyData }) => {
 
   return (
     <div>
-      <div>
+      <div className="">
         <select
           name="course"
           id="course"
@@ -149,4 +149,4 @@ const BarChart = ({ surveyData }) => {
   );
 };
 
-export default BarChart;
+export default FilterByCourseChart;

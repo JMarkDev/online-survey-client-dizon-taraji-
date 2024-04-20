@@ -9,6 +9,8 @@ import DoughnutQuestion3 from "../components/DoughnutQuestion3";
 import DoughnutQ5 from "../components/DoughnutQ5";
 import BarChartQ6 from "../components/BarChartQ6";
 import BarChartQ7 from "../components/BarChartQ7";
+import FilterByCourseChart from "../components/FilterByCourseChart";
+import FilterByCourseChart1 from "../components/FilterByCourseChart1";
 
 const Dashboard = () => {
   const [option, setOption] = useState("default");
@@ -142,15 +144,25 @@ const Dashboard = () => {
             </button>
           </div>
           {option === "study techniques" ? (
-            <DoughnutQ5
-              surveyData={surveyData}
-              calculateTotalOccurrences={calculateTotalOccurrences}
-            />
+            <>
+              <DoughnutQ5
+                surveyData={surveyData}
+                calculateTotalOccurrences={calculateTotalOccurrences}
+              />
+              <div className="bg-white mt-8 rounded-lg p-6 shadow-md">
+                <FilterByCourseChart surveyData={surveyData} />
+              </div>
+            </>
           ) : (
-            <DoughnutQuestion3
-              surveyData={surveyData}
-              calculateTotalOccurrences={calculateTotalOccurrences}
-            />
+            <>
+              <DoughnutQuestion3
+                surveyData={surveyData}
+                calculateTotalOccurrences={calculateTotalOccurrences}
+              />
+              <div className="bg-white mt-8 rounded-lg p-6 shadow-md">
+                <FilterByCourseChart1 surveyData={surveyData} />
+              </div>
+            </>
           )}
         </div>
       </div>

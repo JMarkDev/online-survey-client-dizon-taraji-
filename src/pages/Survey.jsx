@@ -63,7 +63,6 @@ const Survey = () => {
           navigate("/Dashboard");
           setLoading(false);
         }, 3000);
-        setFormSubmitted(true);
       }
     } catch (error) {
       setLoading(false);
@@ -267,8 +266,11 @@ const Survey = () => {
                     <option value="ACT">
                       Associate in Computer Technology
                     </option>
-                    <option value="BSED">
-                      Bachelor of Science in Secondary Education
+                    <option value="BSED-ENGLISH">
+                      Bachelor of Secondary Education Major in English
+                    </option>
+                    <option value="BSED-SCIENCE">
+                      Bachelor of Secondary Education Major in SCIENCE
                     </option>
                     <option value="BEED">
                       Bachelor of Science in Elementary Education
@@ -276,14 +278,12 @@ const Survey = () => {
                     <option value="BSSW">
                       Bachelor of Science in Social Work
                     </option>
-                    <option value="BSPOLSCIE">
-                      Bachelor of Science in Political Science
+                    <option value="AB-POLSCIE">
+                      Bachelor of Arts in Political Science
                     </option>
                     <option value="BSCRIM">
                       Bachelor of Science in Criminology
                     </option>
-                    <option value="AB FIL">Bachelor of Arts in Filipino</option>
-                    {/* <option value="ACT">Associate in Computer Technology</option> */}
                   </select>
                   <div className="pointer-events-none absolute inset-y-0 right-0 flex items-center px-2 text-gray-700">
                     <svg

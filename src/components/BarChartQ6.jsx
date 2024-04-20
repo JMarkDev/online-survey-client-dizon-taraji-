@@ -61,6 +61,7 @@ const BarChart = ({ calculateTotalOccurrences, surveyData }) => {
           style: {
             colors: colorList,
             fontSize: "12px",
+            height: "fit",
           },
         },
       },
