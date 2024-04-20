@@ -173,7 +173,7 @@ const Survey = () => {
           <header className="bg-[#680c0c] text-white py-6 px-4 rounded-t-lg">
             <h1 className="text-lg md:text-2xl font-bold leading-tight">
               Optimizing Study Skills and Time Management of the Students at
-              Western Mindanao State University
+              Western Mindanao State University Pagadian Campus
             </h1>
           </header>
 
