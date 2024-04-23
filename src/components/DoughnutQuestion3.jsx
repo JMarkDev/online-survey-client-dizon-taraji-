@@ -20,6 +20,17 @@ export default function ApexChart({ calculateTotalOccurrences }) {
       type: "donut",
     },
     labels: answerTexts,
+    colors: [
+      "#008FFB",
+      "#00E396",
+      "#FFD700",
+      "#FF6384",
+      "#FF00FF",
+      "#FF4500",
+      "#7CFC00",
+      "#FF1493",
+      "#9400D3",
+    ],
   };
 
   return (

@@ -6,22 +6,29 @@ const FilterByCourseChart = ({ surveyData }) => {
   const [series, setSeries] = useState([]);
   const [course, setCourse] = useState("");
   const [filteredSurveyData, setFilteredSurveyData] = useState([]);
-
+  console.log("testing");
+  console.log(series);
   // Function to handle course selection change
   const handleCourseChange = (event) => {
     setCourse(event.target.value);
   };
 
   // Function to calculate total occurrences of an answer text for a specific question within filtered survey data
-  const calculateTotalOccurrences = (questionId, answerText, data) => {
+  const calculateTotalOccurrences = (
+    questionId,
+    answerText,
+    filteredSurveyData
+  ) => {
     let totalOccurrences = 0;
 
-    data.forEach((entry) => {
+    filteredSurveyData.forEach((entry) => {
       if (
         entry.answers[questionId] &&
         entry.answers[questionId].includes(answerText)
       ) {
         totalOccurrences++;
+      } else {
+        return 0;
       }
     });
 
@@ -68,7 +75,6 @@ const FilterByCourseChart = ({ surveyData }) => {
     "#00E396",
     "#FFD700",
     "#FF6384",
-    "#36A2EB",
     "#FF00FF",
     "#FF4500",
     "#7CFC00",

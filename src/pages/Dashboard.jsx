@@ -27,6 +27,7 @@ const Dashboard = () => {
         const response = await api.get("/survey/all");
         setResponseCount(response.data.length);
         setSurveyData(response.data);
+        console.log(response.data);
       } catch (error) {
         console.log(error);
       }
@@ -110,6 +111,7 @@ const Dashboard = () => {
           ))}
         </div>
       </div>
+
       <div className="max-w-5xl mt-10 m-auto">
         <div className="bg-white rounded-lg p-6 shadow-md">
           <h1 className="text-lg font-semibold text-gray-800 mb-2">
@@ -149,8 +151,9 @@ const Dashboard = () => {
                 surveyData={surveyData}
                 calculateTotalOccurrences={calculateTotalOccurrences}
               />
+
               <div className="bg-white mt-8 rounded-lg p-6 shadow-md">
-                <FilterByCourseChart surveyData={surveyData} />
+                <FilterByCourseChart1 surveyData={surveyData} />
               </div>
             </>
           ) : (
@@ -160,7 +163,7 @@ const Dashboard = () => {
                 calculateTotalOccurrences={calculateTotalOccurrences}
               />
               <div className="bg-white mt-8 rounded-lg p-6 shadow-md">
-                <FilterByCourseChart1 surveyData={surveyData} />
+                <FilterByCourseChart surveyData={surveyData} />
               </div>
             </>
           )}

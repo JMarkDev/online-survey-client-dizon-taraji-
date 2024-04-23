@@ -104,7 +104,7 @@ const Survey = () => {
     const selectedAnswers = values.answers[questionId] || [];
 
     if (
-      questions.questions.find((q) => q.id === questionId).choices.length <= 5
+      questions.questions.find((q) => q.id === questionId).choices.length <= 10
     ) {
       // Radio input logic (only one choice can be selected)
       setValues((prevValues) => ({

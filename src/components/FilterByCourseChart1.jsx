@@ -11,12 +11,15 @@ const FilterByCourseChart1 = ({ surveyData }) => {
   const handleCourseChange = (event) => {
     setCourse(event.target.value);
   };
-
   // Function to calculate total occurrences of an answer text for a specific question within filtered survey data
-  const calculateTotalOccurrences = (questionId, answerText, data) => {
+  const calculateTotalOccurrences = (
+    questionId,
+    answerText,
+    filteredSurveyData
+  ) => {
     let totalOccurrences = 0;
 
-    data.forEach((entry) => {
+    filteredSurveyData.forEach((entry) => {
       if (
         entry.answers[questionId] &&
         entry.answers[questionId].includes(answerText)
@@ -24,6 +27,7 @@ const FilterByCourseChart1 = ({ surveyData }) => {
         totalOccurrences++;
       }
     });
+    console.log(totalOccurrences);
 
     return totalOccurrences;
   };
@@ -39,6 +43,7 @@ const FilterByCourseChart1 = ({ surveyData }) => {
         const filteredData = surveyData.filter(
           (entry) => entry.course === course
         );
+        console.log(filteredData);
         setFilteredSurveyData(filteredData);
       }
     };
@@ -56,7 +61,7 @@ const FilterByCourseChart1 = ({ surveyData }) => {
       const newSeries = answerTexts.map((answerText) =>
         calculateTotalOccurrences(questionId, answerText, filteredSurveyData)
       );
-
+      console.log(newSeries);
       setSeries(newSeries);
     };
 
@@ -68,7 +73,6 @@ const FilterByCourseChart1 = ({ surveyData }) => {
     "#00E396",
     "#FFD700",
     "#FF6384",
-    "#36A2EB",
     "#FF00FF",
     "#FF4500",
     "#7CFC00",

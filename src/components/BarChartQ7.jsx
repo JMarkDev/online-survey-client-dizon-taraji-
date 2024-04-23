@@ -68,7 +68,6 @@ const BarChart = ({ surveyData }) => {
     "#00E396",
     "#FFD700",
     "#FF6384",
-    "#36A2EB",
     "#FF00FF",
     "#FF4500",
     "#7CFC00",
