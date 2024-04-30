@@ -69,10 +69,15 @@ const Analytics = ({ surveyData }) => {
       "Course",
       "Gender",
       "Most productive time for studying",
-      "Hours per week for studying",
-      "Best Approach for Preparing for exam/quiz",
-      "Techniques to Handle Distractions",
+      "Hours per week dedicate to studying outside of class",
+      "Typically approach preparing for exams or assessments",
+      "Managing Study Materials",
+      "Typically approach preparing for exams or assessments",
+      "Most preferred study environment",
       "Time Management",
+      "Task Prioritization",
+      "Learning Support Resources",
+      "Optimizing Study Strategies"
     ];
     const dataRows = surveyData.map((response) => {
       return [
@@ -83,7 +88,12 @@ const Analytics = ({ surveyData }) => {
         response.answers.question1[0],
         response.answers.question2[0],
         response.answers.question3[0],
+        response.answers.question4[0],
         response.answers.question5[0],
+        response.answers.question6[0],
+        response.answers.question7[0],
+        response.answers.question8[0],
+        response.answers.question9[0],
         response.answers.question10[0],
       ];
     });

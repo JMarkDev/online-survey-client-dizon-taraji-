@@ -2,32 +2,79 @@ import React, { useState, useEffect } from "react";
 import ReactApexChart from "react-apexcharts";
 import questions from "../questions/question.json";
 
-const BarChart = ({ calculateTotalOccurrences, surveyData }) => {
+const FilterByCourseGenderChart = ({ surveyData }) => {
   const [series, setSeries] = useState([]);
+  const [course, setCourse] = useState("");
+  const [gender, setGender] = useState("");
+  const [filteredSurveyData, setFilteredSurveyData] = useState([]);
+
+  // Function to handle course selection change
+  const handleCourseChange = (event) => {
+    setCourse(event.target.value);
+  };
+
+  // Function to handle gender selection change
+  const handleGenderChange = (event) => {
+    setGender(event.target.value);
+  };
+
+  // Function to calculate total occurrences of an answer text for a specific question within filtered survey data
+  const calculateTotalOccurrences = (questionId, answerText, data) => {
+    let totalOccurrences = 0;
+
+    data.forEach((entry) => {
+      if (
+        entry.answers[questionId] &&
+        entry.answers[questionId].includes(answerText)
+      ) {
+        totalOccurrences++;
+      }
+    });
+
+    return totalOccurrences;
+  };
 
   useEffect(() => {
-    // Calculate series only when surveyData changes
+    // Filter surveyData based on selected course and gender
+    const filterSurveyData = () => {
+      let filteredData = surveyData;
+
+      if (course) {
+        filteredData = filteredData.filter((entry) => entry.course === course);
+      }
+
+      if (gender) {
+        filteredData = filteredData.filter((entry) => entry.gender === gender);
+      }
+
+      setFilteredSurveyData(filteredData);
+    };
+
+    filterSurveyData();
+  }, [surveyData, course, gender]);
+
+  useEffect(() => {
+    // Calculate series based on filteredSurveyData
     const calculateSeries = () => {
       const question = questions.questions[5];
       const questionId = question.id;
       const answerTexts = question.choices;
 
       const newSeries = answerTexts.map((answerText) =>
-        calculateTotalOccurrences(questionId, answerText)
+        calculateTotalOccurrences(questionId, answerText, filteredSurveyData)
       );
 
       setSeries(newSeries);
     };
 
     calculateSeries();
-  }, [surveyData]);
+  }, [filteredSurveyData]);
 
   const colorList = [
     "#008FFB",
     "#00E396",
     "#FFD700",
     "#FF6384",
-    "#36A2EB",
     "#FF00FF",
     "#FF4500",
     "#7CFC00",
@@ -61,7 +108,6 @@ const BarChart = ({ calculateTotalOccurrences, surveyData }) => {
           style: {
             colors: colorList,
             fontSize: "12px",
-            height: "fit",
           },
         },
       },
@@ -70,6 +116,53 @@ const BarChart = ({ calculateTotalOccurrences, surveyData }) => {
 
   return (
     <div>
+      <div>
+        <select
+          name="course"
+          id="course"
+          onChange={handleCourseChange}
+          className="border-gray-400 border p-2 rounded-lg w-full"
+        >
+          <option value="">Select Course</option>
+          <option value="Bachelor of Science in Computer Science">
+            Bachelor of Science in Computer Science
+          </option>
+          <option value="Associate in Computer Technology">
+            Associate in Computer Technology
+          </option>
+          <option value="Bachelor of Secondary Education Major in English">
+            Bachelor of Secondary Education Major in English
+          </option>
+          <option value="Bachelor of Secondary Education Major in Science">
+            Bachelor of Secondary Education Major in Science
+          </option>
+          <option value="Bachelor of Science in Elementary Education">
+            Bachelor of Science in Elementary Education
+          </option>
+          <option value="Bachelor of Science in Social Work">
+            Bachelor of Science in Social Work
+          </option>
+          <option value="Bachelor of Arts in Political Science">
+            Bachelor of Arts in Political Science
+          </option>
+          <option value="Bachelor of Science in Criminology">
+            Bachelor of Science in Criminology
+          </option>
+        </select>
+      </div>
+      <div>
+        <select
+          name="gender"
+          id="gender"
+          onChange={handleGenderChange}
+          className="border-gray-400 border p-2 rounded-lg w-full mt-2"
+        >
+          <option value="">Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Non-binary">Non-binary</option>
+        </select>
+      </div>
       <div id="chart">
         <ReactApexChart
           options={chartData.options}
@@ -83,4 +176,4 @@ const BarChart = ({ calculateTotalOccurrences, surveyData }) => {
   );
 };
 
-export default BarChart;
+export default FilterByCourseGenderChart;

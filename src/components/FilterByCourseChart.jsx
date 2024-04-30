@@ -5,12 +5,17 @@ import questions from "../questions/question.json";
 const FilterByCourseChart = ({ surveyData }) => {
   const [series, setSeries] = useState([]);
   const [course, setCourse] = useState("");
+  const [gender, setGender] = useState("");
   const [filteredSurveyData, setFilteredSurveyData] = useState([]);
-  console.log("testing");
-  console.log(series);
+
   // Function to handle course selection change
   const handleCourseChange = (event) => {
     setCourse(event.target.value);
+  };
+
+  // Function to handle gender selection change
+  const handleGenderChange = (event) => {
+    setGender(event.target.value);
   };
 
   // Function to calculate total occurrences of an answer text for a specific question within filtered survey data
@@ -27,8 +32,6 @@ const FilterByCourseChart = ({ surveyData }) => {
         entry.answers[questionId].includes(answerText)
       ) {
         totalOccurrences++;
-      } else {
-        return 0;
       }
     });
 
@@ -36,22 +39,23 @@ const FilterByCourseChart = ({ surveyData }) => {
   };
 
   useEffect(() => {
-    // Filter surveyData based on selected course
-    const filterSurveyDataByCourse = () => {
-      if (!course) {
-        // If no course is selected, use the original surveyData
-        setFilteredSurveyData(surveyData);
-      } else {
-        // Filter surveyData based on selected course
-        const filteredData = surveyData.filter(
-          (entry) => entry.course === course
-        );
-        setFilteredSurveyData(filteredData);
+    // Filter surveyData based on selected course and gender
+    const filterSurveyData = () => {
+      let filteredData = surveyData;
+
+      if (course) {
+        filteredData = filteredData.filter((entry) => entry.course === course);
       }
+
+      if (gender) {
+        filteredData = filteredData.filter((entry) => entry.gender === gender);
+      }
+
+      setFilteredSurveyData(filteredData);
     };
 
-    filterSurveyDataByCourse();
-  }, [surveyData, course]);
+    filterSurveyData();
+  }, [surveyData, course, gender]);
 
   useEffect(() => {
     // Calculate series based on filteredSurveyData
@@ -140,6 +144,17 @@ const FilterByCourseChart = ({ surveyData }) => {
             Bachelor of Arts in Political Science
           </option>
           <option value="BSCRIM">Bachelor of Science in Criminology</option>
+        </select>
+        <select
+          name="gender"
+          id="gender"
+          onChange={handleGenderChange}
+          className="border-gray-400 border p-2 rounded-lg w-full mt-2"
+        >
+          <option value="">Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Non-binary">Non-binary</option>
         </select>
       </div>
       <div id="chart">
