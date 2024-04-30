@@ -6,9 +6,13 @@ import api from "../api/api";
 import BarChartQ1 from "../components/BarChartQ1";
 import BarChartQ2 from "../components/BarChartQ2";
 import DoughnutQuestion3 from "../components/DoughnutQuestion3";
+import BarChartQ4 from "../components/BarchartQ4";
 import DoughnutQ5 from "../components/DoughnutQ5";
 import BarChartQ6 from "../components/BarChartQ6";
 import BarChartQ7 from "../components/BarChartQ7";
+import BarChartQ8 from "../components/BarChartQ8";
+import BarChartQ9 from "../components/BarChartQ9";
+import BarChartQ10 from "../components/BarChartQ10";
 import FilterByCourseChart from "../components/FilterByCourseChart";
 import FilterByCourseChart1 from "../components/FilterByCourseChart1";
 
@@ -54,39 +58,6 @@ const Dashboard = () => {
 
     return totalOccurrences;
   };
-
-  function downloadCSVDonut() {
-    const headers = [
-      "Full Name",
-      "Email",
-      "Course",
-      "Gender",
-      "Study Techniques",
-      "Study Skills",
-    ];
-    const dataRows = surveyData.map((response) => {
-      return [
-        response.fullname,
-        response.email,
-        response.course,
-        response.gender,
-        response.answers.question3[0],
-        response.answers.question5[0],
-      ];
-    });
-
-    const csvContent = [headers, ...dataRows]
-      .map((row) => row.join(","))
-      .join("\n");
-
-    const blob = new Blob([csvContent], { type: "text/csv" });
-    const link = document.createElement("a");
-    link.href = window.URL.createObjectURL(blob);
-    link.download = "response.csv";
-    document.body.appendChild(link);
-    link.click();
-    document.body.removeChild(link);
-  }
 
   return (
     <div className="bg-gradient-to-r from-violet-200 to-pink-200 ">
@@ -138,12 +109,7 @@ const Dashboard = () => {
             <h1 className="text-lg font-semibold text-gray-800 mb-2">
               Typically approach preparing for exams or assessments
             </h1>
-            <button
-              onClick={downloadCSVDonut}
-              className="mr-4 text-sm bg-blue-600 hover:bg-blue-800 text-white h-10 rounded-lg px-4"
-            >
-              Download CSV
-            </button>
+            
           </div>
           {option === "study techniques" ? (
             <>
@@ -210,6 +176,54 @@ const Dashboard = () => {
             Time Management
           </h1>
           <BarChartQ7
+            surveyData={surveyData}
+            calculateTotalOccurrences={calculateTotalOccurrences}
+          />
+        </div>
+      </div>
+
+      <div className="max-w-5xl mt-10 m-auto">
+        <div className="bg-white rounded-lg p-6 shadow-md">
+          <h1 className="text-lg font-semibold text-gray-800 mb-2">
+          Task Prioritization
+          </h1>
+          <BarChartQ8
+            surveyData={surveyData}
+            calculateTotalOccurrences={calculateTotalOccurrences}
+          />
+        </div>
+      </div>
+
+      <div className="max-w-5xl mt-10 m-auto">
+        <div className="bg-white rounded-lg p-6 shadow-md">
+          <h1 className="text-lg font-semibold text-gray-800 mb-2">
+          Learning Support Resources
+          </h1>
+          <BarChartQ9
+            surveyData={surveyData}
+            calculateTotalOccurrences={calculateTotalOccurrences}
+          />
+        </div>
+      </div>
+
+      <div className="max-w-5xl mt-10 m-auto">
+        <div className="bg-white rounded-lg p-6 shadow-md">
+          <h1 className="text-lg font-semibold text-gray-800 mb-2">
+          Optimizing Study Strategies
+          </h1>
+          <BarChartQ10
+            surveyData={surveyData}
+            calculateTotalOccurrences={calculateTotalOccurrences}
+          />
+        </div>
+      </div>
+
+      <div className="max-w-5xl mt-10 m-auto">
+        <div className="bg-white rounded-lg p-6 shadow-md">
+          <h1 className="text-lg font-semibold text-gray-800 mb-2">
+          Managing Study Materials
+          </h1>
+          <BarChartQ4
             surveyData={surveyData}
             calculateTotalOccurrences={calculateTotalOccurrences}
           />

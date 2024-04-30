@@ -56,7 +56,7 @@ const BarChart = ({ surveyData }) => {
   useEffect(() => {
     // Calculate series based on filteredSurveyData
     const calculateSeries = () => {
-      const question = questions.questions[6];
+      const question = questions.questions[8];
       const questionId = question.id;
       const answerTexts = question.choices;
 
@@ -103,7 +103,7 @@ const BarChart = ({ surveyData }) => {
         show: false,
       },
       xaxis: {
-        categories: questions.questions[6].choices,
+        categories: questions.questions[8].choices,
         labels: {
           style: {
             colors: colorList,
