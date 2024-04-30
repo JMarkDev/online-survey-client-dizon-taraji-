@@ -124,28 +124,28 @@ const FilterByCourseGenderChart = ({ surveyData }) => {
           className="border-gray-400 border p-2 rounded-lg w-full"
         >
           <option value="">Select Course</option>
-          <option value="Bachelor of Science in Computer Science">
+          <option value="BCSS">
             Bachelor of Science in Computer Science
           </option>
-          <option value="Associate in Computer Technology">
+          <option value="ACT">
             Associate in Computer Technology
           </option>
-          <option value="Bachelor of Secondary Education Major in English">
+          <option value="BSED-ENGLISH">
             Bachelor of Secondary Education Major in English
           </option>
-          <option value="Bachelor of Secondary Education Major in Science">
+          <option value="BSED-SCIENCE">
             Bachelor of Secondary Education Major in Science
           </option>
-          <option value="Bachelor of Science in Elementary Education">
+          <option value="BEED">
             Bachelor of Science in Elementary Education
           </option>
-          <option value="Bachelor of Science in Social Work">
+          <option value="BSSW">
             Bachelor of Science in Social Work
           </option>
-          <option value="Bachelor of Arts in Political Science">
+          <option value="AB-POLSCIE">
             Bachelor of Arts in Political Science
           </option>
-          <option value="Bachelor of Science in Criminology">
+          <option value="BSCRIM">
             Bachelor of Science in Criminology
           </option>
         </select>
