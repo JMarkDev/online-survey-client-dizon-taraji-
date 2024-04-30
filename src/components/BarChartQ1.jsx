@@ -135,7 +135,7 @@ const BarChart = ({ surveyData }) => {
           <option value="">Select Gender</option>
           <option value="Male">Male</option>
           <option value="Female">Female</option>
-          <option value="Non-binary">Non-Binary</option>
+          <option value="Non-Binary">Non-Binary</option>
         </select>
       </div>
       <div id="chart">
